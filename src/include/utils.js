@@ -1,3 +1,6 @@
+const { userExist, addUser } = require('../models/user_model')
+const jwt = require('jsonwebtoken')
+
 /*
 * fonction retournant un text justifié
 * (text:string, large?:number) => string
@@ -16,8 +19,8 @@ const textFormat = (wordList, large, res = '', acc = 0) => {
     const { line, stop } = lineFormat(wordList, large, acc)
     const size = line.map(w => w.length + 1).reduce((acc2, v) => acc2 + v) - 1
     const nbSpace = large - size
-    const spaceWord = Math.round(nbSpace / (line.length - 1))
-    const spaceRep = nbSpace % (line.length - 1)
+    // const spaceWord = Math.round(nbSpace / (line.length - 1))
+    // const spaceRep = nbSpace % (line.length - 1)
 
     const newLine = stop < wordList.length - 1 
     ? line.map((word, i) => i < nbSpace ? word + ' ' : word) : line
@@ -36,8 +39,24 @@ const lineFormat = (wordList, large, acc = 0, res = [], count = -1) => {
     : {line : last, stop : acc}
 }
 
+const escapeHtml = text => {
+    const map = {
+        '<': '&lt;',
+        '>': '&gt;',
+    }
+    return text.replace(/[<>]/g, m => map[m])
+}
+
+const emailVerif = email => {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return regex.test(email)
+}
+
+
 module.exports = { 
     justify,
     lineFormat,
-    textFormat
+    textFormat,
+    escapeHtml,
+    emailVerif
 }

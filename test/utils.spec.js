@@ -27,7 +27,7 @@ describe('test of utils', () => {
             assert.equal(line.join(' '), expect3.join(' '))
         })
 
-        it('should be equal (comnined)', () => {
+        it('should be equal (combined)', () => {
             const { line:line1, stop } = lineFormat(text.split(' '), 80)
             const { line:line2, stop:stop2 } = lineFormat(text.split(' '), 80, stop)
             const { line:line3, stop:stop3 } = lineFormat(text.split(' '), 80, stop2)

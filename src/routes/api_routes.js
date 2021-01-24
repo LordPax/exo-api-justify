@@ -1,22 +1,23 @@
 const app = require('express').Router()
-const { justify } = require('../include/utils')
+const { justify, escapeHtml } = require('../include/utils')
+const { createUser, justifyVerif } = require('../include/user_utils')
+const { addUser, userExist } = require('../models/user_model')
 
 app.get('/coffee', (req, res) => {
     res.setHeader('Content-Type', 'text/plain')
     res.status(418).send('I\'m a teapot')
 })
 
-app.post('/justify', (req, res) => {
+app.post('/justify', async (req, res) => {
     res.setHeader('Content-Type', 'text/plain')
-    if (req.body.text !== '' && req.body.text !== undefined)
-        res.status(200).send(justify(req.body.text))
-    else
-        res.status(400).send('Missing parameters')
+    const { code, msg } = await justifyVerif(req.body)
+    res.status(code).send(msg)
 })
 
-app.post('/token', (req, res) => {
+app.post('/token', async (req, res) => {
     res.setHeader('Content-Type', 'text/plain')
-    // res.status(200).send('test')
+    const { code, msg } = await createUser(req.body)
+    res.status(code).send(msg)
 })
 
 module.exports = app

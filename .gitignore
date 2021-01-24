@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
-bdd/exo-api-justify-backup.sql
+bdd/exo_api_justify_backup.sql
+.env

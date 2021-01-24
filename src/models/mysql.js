@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+require('dotenv').config()
 const { MYSQL_HOST, MYSQL_USER, MYSQL_DB, MYSQL_PW } = process.env
 
 const db = mysql.createConnection({

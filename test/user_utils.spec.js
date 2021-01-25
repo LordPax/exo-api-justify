@@ -35,7 +35,7 @@ describe('test of user utils', () => {
         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0QHF3ZS5mciIsImlhdCI6MTYxMTUwODY4MH0.4eMFiL13o5MA2G-xWS9Y68CfrA95TZ6GEUhgQNf1ULY'
         const token2 = 'eiousdfgsiurhkdfjhgsliujqhsldfiuqhlfkqjhfgqleiru'
 
-        it('should justify', async () => {
+        it.skip('should justify', async () => {
             const { code, msg } = await justifyVerif({text, token})
             // console.log(msg)
             assert.equal(code, 200)

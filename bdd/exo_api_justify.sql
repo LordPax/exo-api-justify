@@ -5,7 +5,11 @@ create table user (
     token text not null,
     wordCount int not null default 0,
     premium int not null default 0,
+    lastUse varchar(20) not null default current_date,
     primary key (id)
 );
 
-INSERT INTO user VALUES (1,'azerty@aze.fr','lmqskdfmqsldkf',0,0),(13,'qwert@qwe.fr','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJ0QHF3ZS5mciIsImlhdCI6MTYxMTUwODY4MH0.4eMFiL13o5MA2G-xWS9Y68CfrA95TZ6GEUhgQNf1ULY',978,0);
+-- tuple utile pour les tests unitaires
+INSERT INTO `user` VALUES 
+(1,'azerty@aze.fr','un_token',319,0,'2021-01-25'),
+(2,'qwert@qwe.fr','un_token',638,0,'2021-01-25');

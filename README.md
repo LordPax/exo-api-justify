@@ -4,8 +4,14 @@ rien pour l'instant
 
 ## Lien temporairement disponible
 
+## Installtion
+```bash
+git clone https://github.com/LordPax/exo-api-justify.git && cd exo-api-justify
+npm install
+npm start
+```
 
-## fichier .env
+## Fichier .env
 ```
 PORT=8080
 MYSQL_HOST=localhost
@@ -15,6 +21,9 @@ MYSQL_DB=exo_api_justify
 JWT_SECRET=secret
 WORD_LIMIT=80000
 ```
+
+## Base de données
+Penser à installer **bdd/exo_api_justify.sql** dans une version de mariadb à jour
 
 ## Documentation
 ### Avoir un token
